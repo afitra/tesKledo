@@ -104,15 +104,10 @@ class EmployeeControllerTest extends TestCase
             'updated_at'=> "2022-10-17T08:30:48.000000Z"
         ]);
 
-        $overtimeApiFalse= $this->get('/overtime-pays/calculate?month=10-17-2022',[
-
-            
-        ]);
-        $overtimeApiFalse->assertStatus(404);
+        $overtimeApiFalse= $this->get('/api/overtime-pays/calculate?month=10-17-2022');
+        $overtimeApiFalse->assertStatus(302);
            
-        $overtimeApiTrue= $this->get('/overtime-pays/calculate?month=2022-10',[
-               
-        ]);
+        $overtimeApiTrue= $this->get('/api/overtime-pays/calculate?month=2022-10');
         $overtimeApiTrue->assertStatus(200);
 
 
