@@ -53,34 +53,7 @@ class GetCalculate{
         
                 };
                 array_push($result,$temp);
-            }
-                 
-
-            
- 
-
-            // if($item->overtimes !== []){
-            //     foreach ($item->overtimes as $key => $value) {
-            //         $value['overtime_duration']=$this->differenceInHours(strval($value->time_ended),strval($value->time_started));
-            //         $temp = date("m",strtotime($value->date));
-            //         if($month == date("m",strtotime($value->date))){
-
-            //             $duration +=  $value['overtime_duration'];
-            //         }
-            //     }
-            //     $item['overtime_duration_total']=$duration;
-    
-            //     if($setting=='1'){
-            //         $item['amount']=($item->salary/173)*$duration;
-                    
-            //     }else{
-            //         $item['amount']=1000*$duration;
-    
-            //     }
-            // };
-
-           
-          
+            }      
         };
         if(!$flag){
             return false;
