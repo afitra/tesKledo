@@ -12,6 +12,7 @@ use App\Services\GetCalculate;
 use App\Http\Requests\SettingRequest;
 use App\Http\Requests\EmployeeRequest;
 use App\Http\Requests\OvertimesRequest;
+use App\Http\Requests\OvertimePayRequest;
 
 class EmployeeController extends Controller
 {
@@ -52,11 +53,15 @@ class EmployeeController extends Controller
     }
  
  
-    public function calculate(Request $request, GetCalculate $getCalculate){
+    public function calculate(OvertimePayRequest $request, GetCalculate $getCalculate){
+
+        $url = $request->query('month');
+        $month=date("m",strtotime($url));
+ 
         $setting = Setting::get()->first()->value;
         $data = Employee::with('Overtimes')->get();
         
-       $data = $getCalculate->handle($data,$setting);
+       $data = $getCalculate->handle($data,$setting, $month);
         return response()->json(array(
             'code'      =>  201,
             'data'   =>  $data

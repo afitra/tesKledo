@@ -24,7 +24,7 @@ class OvertimePayRequest extends FormRequest
     public function rules()
     {
         return [
-            'month'=>'date|date_format:YYYY-MM'
+            'month'=>'date'
         ];
     }
 }

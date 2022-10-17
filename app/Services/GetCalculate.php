@@ -11,28 +11,33 @@ class GetCalculate{
         return $difference;
     }
 
-    public function handle($data, $setting){
-
+    public function handle($data, $setting, $month){
+        
         $duration= 0;
         foreach ($data as $query => $item) {
             
-         
+           
+            
             if(count($item->overtimes )!== 0){
                 foreach ($item->overtimes as $key => $value) {
                     $value['overtime_duration']=$this->differenceInHours(strval($value->time_ended),strval($value->time_started));
-                    $duration +=  $value['overtime_duration'];
+                    $temp = date("m",strtotime($value->date));
+                    if($month == date("m",strtotime($value->date))){
+
+                        $duration +=  $value['overtime_duration'];
+                    }
+                }
+                $item['overtime_duration_total']=$duration;
+    
+                if($setting=='1'){
+                    $item['amount']=($item->salary/173)*$duration;
+                    
+                }else{
+                    $item['amount']=1000*$duration;
+    
                 }
             };
 
-            $item['overtime_duration_total']=$duration;
-
-            if($setting=='1'){
-                $item['amount']=($item->salary/173)*$duration;
-                
-            }else{
-                $item['amount']=1000*$duration;
-
-            }
           
         };
 
