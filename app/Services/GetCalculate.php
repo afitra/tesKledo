@@ -36,6 +36,7 @@ class GetCalculate{
                         $flag=true;
                         unset($value->created_at);
                         unset($value->updated_at);
+                        unset($value->employee_id);
                         array_push($overtimes,$value);
                         $duration +=  $value['overtime_duration'];
                     }; 
