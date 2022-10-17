@@ -62,8 +62,15 @@ class EmployeeController extends Controller
         $data = Employee::with('Overtimes')->get();
         
        $data = $getCalculate->handle($data,$setting, $month);
+       if($data==false){
         return response()->json(array(
-            'code'      =>  201,
+            'code'      =>  400,
+            'message'   =>  "no data on this month"
+        ), 400);  
+       }
+     
+        return response()->json(array(
+            'code'      =>  200,
             'data'   =>  $data
         ), 200);   
     }
