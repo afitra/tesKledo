@@ -1,6 +1,6 @@
 cara install app
 
-    1. clone repository 
+    1. clone repository  lalu masuk ke folder hasil clone
     
     2. jalankan ' composer install '
     
@@ -8,16 +8,34 @@ cara install app
     
     4. masukan semua isi file ' .env.example '  ke file ' .env '
     
-    5. setting env terutama ' DB_CONNECTION -  DB_HOST - DB_PORT - DB_DATABASE - DB_USERNAME - DB_PASSWORD
-        sesuai mysql  anda
+    5. setting variable di file .env  
+
+            DB_CONNECTION -  
+            DB_HOST=
+            DB_PORT= 
+            DB_DATABASE= 
+            DB_USERNAME=
+            DB_PASSWORD=
         
-    6. jalankan ' php artisan migrate ' ->  unutk setup data base
+        
+    6. untuk menjalankan   setup/migrasi  database ketik perintah di terminal
+
+        ' php artisan migrate '  
     
-    7. jalankan ' php artisan db:seed --class=ReferenceSeeder ' -> untuk memasukkan data referense ke db
+    7. untuk memasukkan data referense ke db jalankan  ketik perintah di terminal
+
+        ' php artisan db:seed --class=ReferenceSeeder ' 
     
-    8. jalankan ' php artisan serve ' menjalankan app
+    8. untuk menjalankan app   ketik perintah di terminal
+        ' php artisan serve ' 
     
     9. enjoy 
+
+
+documentation:
+
+    swaggerUI kurang di dukung  oleh  laravel 9 
+    
 
 testing machine:
 

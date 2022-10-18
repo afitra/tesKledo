@@ -13,15 +13,23 @@ use App\Http\Requests\SettingRequest;
 use App\Http\Requests\EmployeeRequest;
 use App\Http\Requests\OvertimesRequest;
 use App\Http\Requests\OvertimePayRequest;
+use App\Repository\EloquentSettingRepository;
 
 class EmployeeController extends Controller
 {
-    public function update(SettingRequest $request )
- 
-    {
-     
-        $query= Setting::get()->first();
+    private $eloquentSetting;
 
+    public function __construct(EloquentSettingRepository $eloquentSetting){
+        $this->eloquentSetting = $eloquentSetting;
+    }
+
+    public function update(SettingRequest $request ){
+
+      
+     
+        $query= $this->eloquentSetting->getSetting();
+
+        return $query;
         $query->value = $request->value;
               $query->save();
             
@@ -58,7 +66,7 @@ class EmployeeController extends Controller
         $url = $request->query('month');
         $month=date("m",strtotime($url));
  
-        $setting = Setting::get()->first()->value;
+        $setting = $this->eloquentSetting->getSetting()->value;
         $data = Employee::with('Overtimes')->get();
         
        $data = $getCalculate->handle($data,$setting, $month);
