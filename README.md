@@ -20,9 +20,13 @@ cara install app
     9. enjoy 
 
 testing machine:
+
     MacOs 12.6
-    aravel 9.19
+    
+    laravel 9.19
+    
     php 8.1.11
+    
     image-docker mysql:5.7
 
 
